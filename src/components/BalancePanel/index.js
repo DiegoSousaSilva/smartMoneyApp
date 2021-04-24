@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, StyleSheet, TouchableOpacity, Text} from 'react-native';
+import {View, StyleSheet, TouchableOpacity} from 'react-native';
 
 import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -29,10 +29,11 @@ const BalancePanel = ({onNewEntryPress}) => {
 };
 
 const styles = StyleSheet.create({
-  container: {},
-  panel: {
-    paddingVertical: 10,
+  container: {
+    textAlign: 'center',
+    zIndex: 1,
   },
+  panel: {},
   button: {
     backgroundColor: Colors.green,
     borderRadius: 30,
