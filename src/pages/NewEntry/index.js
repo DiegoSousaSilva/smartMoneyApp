@@ -25,7 +25,7 @@ const NewEntry = ({navigation, route}) => {
         id: null,
         amount: 0,
         category: {id: null, name: 'Selecione'},
-        entryAt: new Date(),
+        //entryAt: new Date(),
       };
 
   const [entries, saveEntry, deleteEntry] = useEntries();
@@ -33,7 +33,9 @@ const NewEntry = ({navigation, route}) => {
   const [debit, setDebit] = useState(entry.amount <= 0);
   const [amount, setAmount] = useState(entry.amount);
   const [category, setCategory] = useState(entry.category);
-  const [entryAt, setEntryAt] = useState(entry.entryAt);
+  const [entryAt, setEntryAt] = useState(
+    entry.entryAt ? new Date(entry.entryAt) : new Date(),
+  );
 
   const isValid = () => {
     if (parseFloat(amount) !== 0) {

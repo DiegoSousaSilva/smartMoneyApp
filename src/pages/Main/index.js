@@ -19,16 +19,7 @@ const Main = ({navigation}) => {
         />
       </View>
       <View style={{flex: 1}}>
-        <EntryList
-          onEntryPress={item =>
-            navigation.navigate('NewEntry', {
-              entry: item,
-            })
-          }
-          onPressAction={() => {
-            navigation.navigate('Report');
-          }}
-        />
+        <EntryList />
       </View>
     </View>
   );
