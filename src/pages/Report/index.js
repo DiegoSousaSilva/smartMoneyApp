@@ -96,7 +96,7 @@ const Report = ({navigation}) => {
       </Option>
 
       <Rolagem>
-        <EntrySmumary />
+        <EntrySmumary days={relativeDays} />
         <EntryList days={relativeDays} category={category} />
       </Rolagem>
 

@@ -1,29 +1,26 @@
 import React from 'react';
-import {} from 'react-native';
+import {View} from 'react-native';
 import EntrySummaryList from './EntrySummaryList';
 
 import EntrySummaryChart from './EntrySummaryChart';
 import Container from '../Core/Container';
+import useBalanceSumByCategory from '../../hooks/useBalanceSumByCategory';
 
 // import { Container } from './styles';
 
-const EntrySmumary = ({onPressAction}) => {
-  const categories = [
-    {key: '1', description: 'Alimentação', amount: '100'},
-    {key: '2', description: 'Combustivel', amount: '60'},
-    {key: '3', description: 'Alguel', amount: '250'},
-    {key: '4', description: 'Lazer', amount: '100'},
-    {key: '5', description: 'Outros', amount: '150'},
-  ];
+const EntrySmumary = ({days = 7, onPressAction}) => {
+  const [balanceSum] = useBalanceSumByCategory(days);
 
   return (
     <Container
       title="Categorias"
-      titleRodape="Últimos 7 dias"
+      titleRodape={`Últimos ${days} dias`}
       more="Ver mais..."
       onPressAction={onPressAction}>
-      <EntrySummaryChart />
-      <EntrySummaryList categories={categories} />
+      <View style={{flexDirection: 'row', paddingVertical: 10}}>
+        <EntrySummaryChart data={balanceSum} />
+        <EntrySummaryList data={balanceSum} />
+      </View>
     </Container>
   );
 };

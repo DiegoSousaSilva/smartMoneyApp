@@ -1,16 +1,16 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 
 import {BarChart} from 'react-native-svg-charts';
-
-// import { Container } from './styles';
+import useBalanceSumByDate from '../../../hooks/useBalanceSumByDate';
 
 const BalancePanelChart = () => {
-  const data = [100, 80, -30, 120, 250, 35, 70];
+  //  const data = [100, 80, -30, 120, 250, 35, 70];
+  const [balanceSum] = useBalanceSumByDate();
   return (
     <View style={styles.container}>
       <BarChart
-        data={data}
+        data={balanceSum}
         style={styles.chart}
         svg={{
           fill: 'rgba(0,0,0, .1)',

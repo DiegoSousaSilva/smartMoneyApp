@@ -4,7 +4,7 @@ import Colors from '../../styles/Colors';
 
 export const Container = styled.View`
   background-color: ${Colors.asphalt};
-  margin: 10px;
+  margin: 0 10px 10px 10px;
   border-radius: 6px;
   border-style: solid;
   border-width: 1px;

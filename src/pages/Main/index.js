@@ -11,7 +11,7 @@ const Main = ({navigation}) => {
   return (
     <View style={styles.container}>
       <BalancePanel onNewEntryPress={() => navigation.navigate('NewEntry')} />
-      <View style={{}}>
+      <View>
         <EntrySmumary
           onPressAction={() => {
             navigation.navigate('Report');
