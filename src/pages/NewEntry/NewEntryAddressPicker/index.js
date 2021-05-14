@@ -8,7 +8,7 @@ import Colors from '../../../components/styles/Colors';
 
 // import { Container } from './styles';
 
-const NewEntryAddressPicker = () => {
+const NewEntryAddressPicker = ({address, onChange}) => {
   const getLocation = (latitude, longitude) => {
     Geocoder.init('AIzaSyC6zpxiveenHn5riKB_VbSh3X28eRAqeH0');
 
@@ -16,7 +16,24 @@ const NewEntryAddressPicker = () => {
       .then(json => {
         const formatedAddress = json.results[0].formatted_address;
 
-        Alert.alert('Formated  Address:', formatedAddress);
+        Alert.alert('Localização', formatedAddress, [
+          {
+            text: 'Cancelar',
+            style: 'cancel',
+            onPress: () => {},
+          },
+          {
+            text: 'Confirmar',
+            style: 'cancel',
+            onPress: () => {
+              onChange({
+                latitude: latitude,
+                longitude: longitude,
+                address: formatedAddress,
+              });
+            },
+          },
+        ]);
       })
       .catch(error => {
         console.error(
@@ -47,12 +64,33 @@ const NewEntryAddressPicker = () => {
   };
 
   const onButtonPress = () => {
-    getPosition();
+    if (address) {
+      Alert.alert('Localização', address, [
+        {
+          text: 'Apagar',
+          style: 'cancel',
+          onPress: () => {
+            onChange({latitude: null, longitude: null, address: ''});
+          },
+        },
+        {
+          text: 'Ok',
+          style: 'default',
+          onPress: () => {
+            console.log('Ok Pressed');
+          },
+        },
+      ]);
+    } else {
+      getPosition();
+    }
   };
 
   return (
     <View>
-      <TouchableOpacity style={styles.button} onPress={onButtonPress}>
+      <TouchableOpacity
+        style={[styles.button, address ? styles.buttonActived : '']}
+        onPress={onButtonPress}>
         <Icon name="person-pin" size={30} color={Colors.white} />
       </TouchableOpacity>
     </View>
@@ -69,6 +107,10 @@ const styles = StyleSheet.create({
     height: 59,
     marginHorizontal: 3,
     margin: 10,
+  },
+
+  buttonActived: {
+    color: Colors.blue,
   },
 });
 

@@ -30,7 +30,7 @@ const EntryListItem = ({item, onEntryPress}) => {
           </FooterView>
           <FooterView>
             <Icon name="person-pin" size={12} color={Colors.metal} />
-            <Local>Rua 2, imperatriz</Local>
+            <Local>{item.address}</Local>
           </FooterView>
         </FooterDescription>
       </Description>

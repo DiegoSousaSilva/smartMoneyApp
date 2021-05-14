@@ -27,6 +27,9 @@ const NewEntry = ({navigation, route}) => {
         amount: 0,
         category: {id: null, name: 'Selecione'},
         //entryAt: new Date(),
+        address: null,
+        latitude: null,
+        longitude: null,
       };
 
   const [entries, saveEntry, deleteEntry] = useEntries();
@@ -37,6 +40,9 @@ const NewEntry = ({navigation, route}) => {
   const [entryAt, setEntryAt] = useState(
     entry.entryAt ? new Date(entry.entryAt) : new Date(),
   );
+  const [address, setAddress] = useState(entry.address);
+  const [latitude, setLatitude] = useState(entry.latitude);
+  const [longitude, setLongitude] = useState(entry.longitude);
 
   const isValid = () => {
     if (parseFloat(amount) !== 0) {
@@ -48,6 +54,9 @@ const NewEntry = ({navigation, route}) => {
   const onSave = () => {
     const data = {
       id: entry.id ? entry.id : `${Math.floor(Math.random() * 1000)}`,
+      address: address,
+      latitude: latitude,
+      longitude: longitude,
       amount: parseFloat(amount),
       category: category,
       entryAt: entryAt,
@@ -96,7 +105,14 @@ const NewEntry = ({navigation, route}) => {
 
         <FormActionContainer>
           <NewEntryDatePicker onChange={setEntryAt} value={entryAt} />
-          <NewEntryAddressPicker />
+          <NewEntryAddressPicker
+            address={address}
+            onChange={({latitude, longitude, address}) => {
+              setLatitude(latitude);
+              setLongitude(longitude);
+              setAddress(address);
+            }}
+          />
           <NewEntryDeleteAction onOkPress={onDelete} entry={entry} />
         </FormActionContainer>
       </FormContainer>
