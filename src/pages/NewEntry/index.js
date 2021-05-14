@@ -12,6 +12,7 @@ import ActionFooter, {
 } from '../../components/Core/ActionFooter';
 import useBalance from '../../hooks/useBalance';
 import useEntries from '../../hooks/useEntries';
+import NewEntryAddressPicker from './NewEntryAddressPicker';
 
 const NewEntry = ({navigation, route}) => {
   //Var to BalanceLabel
@@ -95,6 +96,7 @@ const NewEntry = ({navigation, route}) => {
 
         <FormActionContainer>
           <NewEntryDatePicker onChange={setEntryAt} value={entryAt} />
+          <NewEntryAddressPicker />
           <NewEntryDeleteAction onOkPress={onDelete} entry={entry} />
         </FormActionContainer>
       </FormContainer>
