@@ -3,60 +3,43 @@ import {View, TouchableOpacity, StyleSheet, Modal} from 'react-native';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Colors from '../../../components/styles/Colors';
-import {RNCamera} from 'react-native-camera';
+import NewEntryCameraPickerModal from './NewEntryCameraPickerModal';
+
 // import { Container } from './styles';
 
-const NewEntryCameraPicker = () => {
-  const [showModal, setShowModal] = useState();
-  const [camera, setCamera] = useState();
+const NewEntryCameraPicker = ({photo, onChangePhoto}) => {
+  const [modalVisible, setMoldalVisible] = useState(false);
 
-  const onTakePicture = () => {};
+  const onChangePhotoPress = newPhoto => {
+    onChangePhoto(newPhoto);
+    onClosePress();
+  };
 
-  const onDelete = () => {
-    setShowModal(false);
+  const onDeletePicturePress = () => {
+    onChangePhoto(null);
+    onClosePress();
+  };
+
+  const onClosePress = () => {
+    setMoldalVisible(false);
   };
 
   return (
     <View>
       <TouchableOpacity
-        style={styles.button}
+        style={[styles.button, photo ? styles.buttonActived : '']}
         onPress={() => {
-          setShowModal(true);
+          setMoldalVisible(true);
         }}>
         <Icon name="photo-camera" size={30} color={Colors.white} />
       </TouchableOpacity>
-
-      <Modal animationType="slide" transparent={false} visible={showModal}>
-        <RNCamera
-          ref={ref => setCamera(ref)}
-          style={{flex: 1}}
-          type={RNCamera.Constants.Type.back}
-          autoFocus={RNCamera.Constants.AutoFocus.on}
-          flashMode={RNCamera.Constants.FlashMode.on}
-          androidCameraPermissionOptions={{
-            title: 'Permissão para usar a câmera',
-            message: 'Precisamos da sua permissão para usar a câmera',
-            buttonPositive: 'Ok',
-            buttonNegative: 'Cancelar',
-          }}
-          captureAudio={false}>
-          <Icon
-            name="photo-camera"
-            size={40}
-            color={Colors.white}
-            onPress={onTakePicture}
-            style={styles.buttonTakePicture}
-          />
-
-          <Icon
-            name="close"
-            size={50}
-            color={Colors.white}
-            onPress={onDelete}
-            style={styles.buttonDeletePicture}
-          />
-        </RNCamera>
-      </Modal>
+      <NewEntryCameraPickerModal
+        photo={photo}
+        isVisible={modalVisible}
+        onChangePhoto={onChangePhotoPress}
+        onDelete={onDeletePicturePress}
+        onClose={onClosePress}
+      />
     </View>
   );
 };
@@ -72,19 +55,8 @@ const styles = StyleSheet.create({
     marginHorizontal: 3,
     margin: 10,
   },
-
-  buttonTakePicture: {
-    flex: 0,
-    alignSelf: 'center',
-    position: 'absolute',
-    bottom: 20,
-  },
-
-  buttonDeletePicture: {
-    flex: 0,
-    position: 'absolute',
-    top: 20,
-    right: 20,
+  buttonActived: {
+    backgroundColor: Colors.blue,
   },
 });
 

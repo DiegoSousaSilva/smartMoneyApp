@@ -29,6 +29,7 @@ const NewEntry = ({navigation, route}) => {
         category: {id: null, name: 'Selecione'},
         //entryAt: new Date(),
         address: null,
+        photo: null,
         latitude: null,
         longitude: null,
       };
@@ -42,6 +43,7 @@ const NewEntry = ({navigation, route}) => {
     entry.entryAt ? new Date(entry.entryAt) : new Date(),
   );
   const [address, setAddress] = useState(entry.address);
+  const [photo, setPhoto] = useState(entry.photo);
   const [latitude, setLatitude] = useState(entry.latitude);
   const [longitude, setLongitude] = useState(entry.longitude);
 
@@ -58,6 +60,7 @@ const NewEntry = ({navigation, route}) => {
       address: address,
       latitude: latitude,
       longitude: longitude,
+      photo: photo,
       amount: parseFloat(amount),
       category: category,
       entryAt: entryAt,
@@ -114,7 +117,7 @@ const NewEntry = ({navigation, route}) => {
               setAddress(address);
             }}
           />
-          <NewEntryCameraPicker />
+          <NewEntryCameraPicker photo={photo} onChangePhoto={setPhoto} />
 
           <NewEntryDeleteAction onOkPress={onDelete} entry={entry} />
         </FormActionContainer>
