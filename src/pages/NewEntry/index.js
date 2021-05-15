@@ -13,6 +13,7 @@ import ActionFooter, {
 import useBalance from '../../hooks/useBalance';
 import useEntries from '../../hooks/useEntries';
 import NewEntryAddressPicker from './NewEntryAddressPicker';
+import NewEntryCameraPicker from './NewEntryCameraPicker';
 
 const NewEntry = ({navigation, route}) => {
   //Var to BalanceLabel
@@ -113,6 +114,8 @@ const NewEntry = ({navigation, route}) => {
               setAddress(address);
             }}
           />
+          <NewEntryCameraPicker />
+
           <NewEntryDeleteAction onOkPress={onDelete} entry={entry} />
         </FormActionContainer>
       </FormContainer>

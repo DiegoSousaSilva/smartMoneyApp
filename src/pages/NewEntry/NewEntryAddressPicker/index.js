@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
   },
 
   buttonActived: {
-    color: Colors.blue,
+    backgroundColor: Colors.blue,
   },
 });
 
