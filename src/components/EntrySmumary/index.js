@@ -8,7 +8,7 @@ import useBalanceSumByCategory from '../../hooks/useBalanceSumByCategory';
 
 // import { Container } from './styles';
 
-const EntrySmumary = ({days = 7, onPressAction}) => {
+const EntrySmumary = ({days = 30, onPressAction}) => {
   const [balanceSum] = useBalanceSumByCategory(days);
 
   return (

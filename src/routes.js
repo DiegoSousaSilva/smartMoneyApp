@@ -5,13 +5,21 @@ import {createStackNavigator} from '@react-navigation/stack';
 import Main from './pages/Main';
 import Report from './pages/Report';
 import NewEntry from './pages/NewEntry';
+import Welcome from './pages/Welcome';
 
 const Stack = createStackNavigator();
 
 const Routes = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
+      <Stack.Navigator initialRouteName="Welcome">
+        <Stack.Screen
+          name="Welcome"
+          component={Welcome}
+          options={{
+            headerShown: false,
+          }}
+        />
         <Stack.Screen
           name="Home"
           component={Main}

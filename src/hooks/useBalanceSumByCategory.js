@@ -2,7 +2,7 @@ import {useState, useEffect} from 'react';
 
 import {getBalanceSumByCategory} from '../services/Balance';
 
-const useBalanceSumByCategory = (days = 7) => {
+const useBalanceSumByCategory = (days = 30) => {
   const [balanceSum, setBalanceSum] = useState([]);
 
   useEffect(() => {
