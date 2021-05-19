@@ -1,4 +1,4 @@
-import {getRealm} from './Realm';
+import {getRealm, initDB} from './Realm';
 import {Alert} from 'react-native';
 
 import moment from '../vendors/Moment';
@@ -8,17 +8,20 @@ export const saveEntry = async entry => {
   let data = {};
 
   try {
+    /* const category = realm
+    .objects('Category')
+    .filtered('id == $0', entry.category.id['0']);*/
     realm.write(() => {
       data = {
-        id: entry.id,
-        amount: entry.amount,
-        entryAt: entry.entryAt,
+        id: entry.id || Math.floor(Math.random() * 1000).toString(),
+        amount: entry.amount || 0,
+        entryAt: entry.entryAt || new Date(),
         address: entry.address,
         photo: entry.photo,
         latitude: entry.latitude,
         longitude: entry.longitude,
         description: entry.category.name,
-        isInit: false,
+        isInit: entry.isInit || false,
         category: entry.category,
       };
 

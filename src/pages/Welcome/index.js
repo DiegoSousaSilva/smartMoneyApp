@@ -6,11 +6,24 @@ import WellcomeBalanceInput from './WelcomeBalanceInput';
 import ActionFooter, {
   ActionPrimaryButton,
 } from '../../components/Core/ActionFooter';
+import {saveEntry} from '../../services/Entries';
+import useCategories from '../../hooks/useCategories';
 
 const Welcome = ({navigation}) => {
+  const [, , , initCategory] = useCategories();
   const [amount, setAmount] = useState(0);
 
-  const onSavePress = () => {};
+  const onSavePress = () => {
+    const data = {
+      amount: amount,
+      category: initCategory,
+      isInit: true,
+    };
+    console.log(`onSavePress:: ${JSON.stringify(data)}`);
+    saveEntry(data);
+
+    navigation.navigate('Home');
+  };
 
   return (
     <View style={styles.container}>
@@ -23,11 +36,6 @@ const Welcome = ({navigation}) => {
           Para usar o Smart Money você precisa informar o seu saldo atual. Vamos
           lá?
         </Text>
-      </View>
-      <View>
-        <TouchableOpacity onPress={() => navigation.navigate('Home')}>
-          <Text>Vamos lá</Text>
-        </TouchableOpacity>
       </View>
       <WellcomeBalanceInput amount={amount} onChangeValue={setAmount} />
       <ActionFooter>
