@@ -8,6 +8,7 @@ import ActionFooter, {
 } from '../../components/Core/ActionFooter';
 import {saveEntry} from '../../services/Entries';
 import useCategories from '../../hooks/useCategories';
+import {setInitialized} from '../../services/Welcome';
 
 const Welcome = ({navigation}) => {
   const [, , , initCategory] = useCategories();
@@ -21,6 +22,8 @@ const Welcome = ({navigation}) => {
     };
     console.log(`onSavePress:: ${JSON.stringify(data)}`);
     saveEntry(data);
+
+    setInitialized();
 
     navigation.navigate('Home');
   };

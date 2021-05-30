@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     zIndex: 1,
     marginBottom: -20,
+    marginTop: -8,
   },
   panel: {},
   button: {

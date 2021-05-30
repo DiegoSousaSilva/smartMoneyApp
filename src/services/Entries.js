@@ -8,9 +8,10 @@ export const saveEntry = async entry => {
   let data = {};
 
   try {
-    /* const category = realm
-    .objects('Category')
-    .filtered('id == $0', entry.category.id['0']);*/
+    /*const categoryEntry = realm
+      .objects('Category')
+      .filtered('id == $0', entry.category.id['0']);*/
+
     realm.write(() => {
       data = {
         id: entry.id || Math.floor(Math.random() * 1000).toString(),

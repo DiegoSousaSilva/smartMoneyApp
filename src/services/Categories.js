@@ -154,7 +154,7 @@ export const getCreditCategories = async () => {
   return realm
     .objects('Category')
     .filtered('isCredit = true AND isInit = false')
-    .sorted('order')['0'];
+    .sorted('order');
 };
 
 export const getInitCategories = async () => {

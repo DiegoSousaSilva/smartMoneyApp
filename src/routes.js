@@ -6,13 +6,21 @@ import Main from './pages/Main';
 import Report from './pages/Report';
 import NewEntry from './pages/NewEntry';
 import Welcome from './pages/Welcome';
+import Loading from './pages/Loading';
 
 const Stack = createStackNavigator();
 
 const Routes = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Welcome">
+      <Stack.Navigator initialRouteName="Loading">
+        <Stack.Screen
+          name="Loading"
+          component={Loading}
+          options={{
+            headerShown: false,
+          }}
+        />
         <Stack.Screen
           name="Welcome"
           component={Welcome}
