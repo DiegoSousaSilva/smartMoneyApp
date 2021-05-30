@@ -1,7 +1,9 @@
+import moment from 'moment';
 import React from 'react';
 import {View, Text, Button} from 'react-native';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import Currency from '../../Core/Currency';
 import Colors from '../../styles/Colors';
 
 import {
@@ -26,7 +28,7 @@ const EntryListItem = ({item, onEntryPress}) => {
         <FooterDescription>
           <FooterView>
             <Icon name="access-time" size={12} color={Colors.metal} />
-            <Date>{item.entryAt.toString()}</Date>
+            <Date>{moment(item.entryAt).calendar()}</Date>
           </FooterView>
           <FooterView>
             <Icon name="person-pin" size={12} color={Colors.metal} />
@@ -35,7 +37,9 @@ const EntryListItem = ({item, onEntryPress}) => {
         </FooterDescription>
       </Description>
 
-      <Valor>R${item.amount}</Valor>
+      <Valor>
+        <Currency value={item.amount} />
+      </Valor>
     </Container>
   );
 };

@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import Svg, {Circle} from 'react-native-svg';
+import Currency from '../../../Core/Currency';
 import Colors from '../../../styles/Colors';
 
 // import { Container } from './styles';
@@ -21,7 +22,9 @@ const EntrySummaryListItem = ({entry}) => {
         />
       </Svg>
       <Text style={styles.txtCategory}>{entry.category.name}</Text>
-      <Text style={styles.txtAmount}>{entry.amount}</Text>
+      <Text style={styles.txtAmount}>
+        <Currency value={entry.amount} />
+      </Text>
     </View>
   );
 };

@@ -16,7 +16,6 @@ export const Title = styled.Text`
 `;
 
 export const FooterDescription = styled.View`
-  flex-direction: row;
   justify-content: space-between;
   padding: 2px;
 `;

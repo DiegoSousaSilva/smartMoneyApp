@@ -46,7 +46,7 @@ const IputMoney = ({
     <Container>
       <Btn onPress={onChangeDebitCredit}>
         <TypeText style={{color: debit <= 0 ? Colors.red : Colors.white}}>
-          {`${debitPrefix}R$`}
+          {`${debitPrefix}$`}
         </TypeText>
       </Btn>
       <MaskedText
