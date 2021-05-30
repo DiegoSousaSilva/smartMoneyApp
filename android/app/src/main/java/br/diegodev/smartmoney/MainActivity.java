@@ -1,4 +1,4 @@
-package com.smartmoney;
+package br.diegodev.smartmoney;
 
 import com.facebook.react.ReactActivity;
 

@@ -131,7 +131,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.smartmoney"
+        applicationId "br.diegodev.smartmoney"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
